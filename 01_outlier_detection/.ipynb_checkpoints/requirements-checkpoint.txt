@@ -1,0 +1,8 @@
+seaborn
+IPython
+matplotlib
+PIL
+pyod
+PyNomaly
+sklearn
+alibi_detect

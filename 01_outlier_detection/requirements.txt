@@ -1,0 +1,9 @@
+spyder-kernels==2.5.*
+seaborn
+IPython
+matplotlib
+pillow
+pyod
+PyNomaly
+scikit-learn
+alibi_detect
