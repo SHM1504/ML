@@ -76,7 +76,7 @@ plt.show()
 #    (in high dimensional data all points are kind of sparse)
 #    https://www.dbs.ifi.lmu.de/Publikationen/Papers/KDD2008.pdf
 
-im = Image.open("ABOD_intuition.jpg")
+im = Image.open("01_outlier_detection/ABOD_intuition.jpg")
 display(im)
 
 #%% Implementation
@@ -185,7 +185,7 @@ plt.show()
     
     # - The above steps are repeated to construct random binary trees.
 
-im = Image.open("Isolation_forest_intuition.png")
+im = Image.open("01_outlier_detection/Isolation_forest_intuition.png")
 display(im)
 
 #%% Implementation
@@ -240,7 +240,7 @@ plt.show()
 # Advantage: local outliers can be found.
 
 # Open the transparent image
-image = Image.open("LOF_intuition.png")
+image = Image.open("01_outlier_detection/LOF_intuition.png")
 
 # Create a new image with white background and the same size as the original image
 new_image = Image.new("RGB", image.size, "white")
