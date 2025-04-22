@@ -49,6 +49,13 @@ from sklearn.svm import SVC
 from sklearn.metrics import roc_auc_score, accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, roc_curve, auc
 from sklearn.ensemble import RandomForestClassifier
 
+import kagglehub
+
+# Download latest version
+path = kagglehub.dataset_download("mlg-ulb/creditcardfraud")
+
+print("Path to dataset files:", path)
+
 # %%    Resampling Techniques to Solve Class Imbalance
 
 im = Image.open("1_under_over-sampling.webp")
@@ -58,7 +65,7 @@ display(im)
 
 #%% load dataset
 
-data = pd.read_csv('creditcard.csv')
+data = pd.read_csv(path + "/creditcard.csv")
 data.columns = data.columns.str.strip()
 
 #%% show distribution
