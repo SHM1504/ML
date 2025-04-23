@@ -4,7 +4,7 @@ save_data_on_exit = True
 save_history = True
 save_non_project_files = False
 project_type = 'empty-project-type'
-recent_files = ['01_outlier_detection\\01_outlier_detection.py', '02_handling_Imbalanced_Data.py', '03_feature_selection_and_dimensionality_reduction.py', '04_PCA\\04_PCA\\04_PCA.py', '05_Autoencoder\\06_Autoencoder\\06_Autoencoder.py', '06_Multi-Class-Classification.py']
+recent_files = ['01_outlier_detection\\01_outlier_detection.py', '02_handling_Imbalanced_Data.py', '03_feature_selection_and_dimensionality_reduction.py', '04_PCA\\04_PCA\\04_PCA.py', '05_Autoencoder\\06_Autoencoder\\06_Autoencoder.py', '06_Multi-Class-Classification.py', '07_clustering_kmeans_dbscan.py']
 
 [main]
 version = 0.2.0
