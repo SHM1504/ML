@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-@author: User
+@author: Swetlana
 """
 
 
