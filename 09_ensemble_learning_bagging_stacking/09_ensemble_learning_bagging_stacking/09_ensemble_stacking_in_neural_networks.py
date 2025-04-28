@@ -12,7 +12,7 @@ Source: https://colab.research.google.com/github/YashK07/Stacking-Ensembling/blo
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from keras import backend as K
+import tensorflow.keras.backend as K
 from keras.callbacks import EarlyStopping
 from numpy import dstack
 from sklearn.linear_model import LogisticRegression
@@ -121,6 +121,7 @@ def precision_m(y_true, y_pred):
     return precision
 
 def f1_m(y_true, y_pred):
+    print(y_true,y_pred)
     precision = precision_m(y_true, y_pred)
     recall = recall_m(y_true, y_pred)
     return 2*((precision*recall)/(precision+recall+K.epsilon()))

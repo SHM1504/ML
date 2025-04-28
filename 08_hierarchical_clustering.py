@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Mar 26 10:22:29 2025
 
-@author: Chaouki Dkhili
 """
 
 # %%Was ist Clustering

@@ -28,6 +28,7 @@ from sklearn.preprocessing import LabelEncoder
  # Importiert LabelEncoder, um kategoriale Daten in numerische zu konvertieren.
 from sklearn.feature_selection import RFE 
   # Importiert RFE für die rekursive Merkmaleliminierung.
+  
 
  
 # %%Was ist Featureauswahl und Dimensionsreduktion ?
@@ -121,9 +122,6 @@ print("Ausgewählte Features:", X.columns[selector.get_support()])
 
 # RFE kann auch für Regressionsprobleme eingesetzt werden.
 
-# Beispiel mit einem Entscheidungsbaum für Regression:
-
-
 
 
 
@@ -175,9 +173,78 @@ model = RandomForestClassifier(n_estimators=100, random_state=0)
 
 #%%
 
-# Regression Beispiel einfügen
+# Logistische Regression Beispiel
+import matplotlib.pyplot as plt
 
+from sklearn.datasets import load_digits
+from sklearn.feature_selection import RFE
+from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import MinMaxScaler
 
+# Load the digits dataset
+digits = load_digits()
+X = digits.images.reshape((len(digits.images), -1))
+y = digits.target
+
+pipe = Pipeline(
+    [
+        ("scaler", MinMaxScaler()),
+        ("rfe", RFE(estimator=LogisticRegression(), n_features_to_select=1, step=1)),
+    ]
+)
+
+pipe.fit(X, y)
+ranking = pipe.named_steps["rfe"].ranking_.reshape(digits.images[0].shape)
+
+# Plot pixel ranking
+plt.matshow(ranking, cmap=plt.cm.Blues)
+
+# Add annotations for pixel numbers
+for i in range(ranking.shape[0]):
+    for j in range(ranking.shape[1]):
+        plt.text(j, i, str(ranking[i, j]), ha="center", va="center", color="black")
+
+plt.colorbar()
+plt.title("Ranking of pixels with RFE\n(Logistic Regression)")
+plt.show()
+
+#%%
+# Regression mit Crossvalidation
+
+from sklearn.feature_selection import RFECV
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import StratifiedKFold
+
+min_features_to_select = 1  # Minimum number of features to consider
+clf = LogisticRegression()
+cv = StratifiedKFold(5)
+
+rfecv = RFECV(
+    estimator=clf,
+    step=1,
+    cv=cv,
+    scoring="accuracy",
+    min_features_to_select=min_features_to_select,
+    n_jobs=2,
+)
+rfecv.fit(X, y)
+
+print(f"Optimal number of features: {rfecv.n_features_}")
+
+#%%
+
+cv_results = pd.DataFrame(rfecv.cv_results_)
+plt.figure()
+plt.xlabel("Number of features selected")
+plt.ylabel("Mean test accuracy")
+plt.errorbar(
+    x=cv_results["n_features"],
+    y=cv_results["mean_test_score"],
+    yerr=cv_results["std_test_score"],
+)
+plt.title("Recursive Feature Elimination \nwith correlated features")
+plt.show()
 
 # %%Dimensionsreduktion
 # Während die Featureauswahl bestimmte Variablen entfernt, 
