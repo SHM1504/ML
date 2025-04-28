@@ -7,6 +7,8 @@ Created on Mon Jan  8 15:24:51 2024
 
 Source: https://github.com/joaomdmoura/crewAI
 
+Description: test for git
+
 requirements: conda create -n crewai spyder python=3.12 -c conda-forge
               pip install crewai crewai-tools duckduckgo-search langchain
               
