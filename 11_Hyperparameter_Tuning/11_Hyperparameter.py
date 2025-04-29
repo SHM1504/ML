@@ -295,3 +295,14 @@ print(f"Best: {format(best)}")
 #     scores = cross_val_score(GradientBoostingClassifier(random_state=123, **params_gbm), X_train, y_train, scoring=acc_score, cv=5, n_jobs=-1).mean()))
     
 #     return scores
+
+
+
+
+#%%
+
+
+
+
+
+
