@@ -335,6 +335,7 @@ print("Ensemble-Modell erfolgreich erstellt!")
 # - Jedes Modell "stimmt" ab
 # - Die höchste Wahrscheinlichkeit gewinnt
 ############################################
+#%%
 
 ############################################
 # Finales Modell erstellen
@@ -351,6 +352,8 @@ print("Finales Modell erfolgreich erstellt!")
 # - Macht das Modell produktionsbereit
 ############################################
 
+#%%
+
 ############################################
 # Modellbewertung
 ############################################
@@ -365,7 +368,7 @@ evaluate_model(final_model)  # Zeigt Leistungsmetriken
 # - Confusion Matrix: Tatsächliche vs. vorhergesagte Klassen
 # - Feature Importance: Welche Merkmale sind am wichtigsten
 ############################################
-
+#%%
 ############################################
 # 13. Visualisierungen
 ############################################
@@ -390,7 +393,7 @@ plot_model(final_model, plot='confusion_matrix')  # Kreuztabelle der tatsächlic
 #   - FP (False Positive): Falscher Alarm
 #   - FN (False Negative): Übersehene Positive
 ############################################
-
+#%%
 ############################################
 # 14. Modellinterpretation
 ############################################
@@ -405,6 +408,8 @@ interpret_model(tuned_rf)  # Erklärt die Entscheidungsfindung des Modells
 # - Macht das Modell weniger "blackbox"
 ############################################
 
+
+#%%
 ############################################
 # Modell speichern
 ############################################
@@ -420,6 +425,8 @@ print("Modell wurde als 'diabetes_final_model_pycaret' gespeichert!")
 # - Kann später mit load_model() geladen werden
 ############################################
 
+
+#%%
 ############################################
 # Modell laden
 ############################################
@@ -434,7 +441,7 @@ print("Modell erfolgreich geladen!")
 # - Direkt bereit für Vorhersagen
 # - Kann in Webanwendungen oder APIs verwendet werden
 ##########################################
-
+#%%
 ############################################
 # 15. Vorhersage mit neuen Daten
 ############################################

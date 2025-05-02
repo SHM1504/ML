@@ -223,6 +223,8 @@ https://keras.io/api/applications/resnet/#resnet50-function
 ist auf ImageNet trainiert
 
 """
+from tensorflow import keras
+from keras.applications.resnet50 import ResNet50
 
 model = ResNet50(weights='imagenet')
 img_path = '13_transfer_learning/13_Transfer_Learning_03-elephant2.jpg'
@@ -411,7 +413,7 @@ model.fit(training_set,
 base_model.trainable = True
 model.compile(optimizer=keras.optimizers.Adam(1e-5),
               loss=keras.losses.BinaryCrossentropy(from_logits=True),
-              metrics=keras.metrics.BinaryAccuracy())
+              metrics=[keras.metrics.BinaryAccuracy()])
 
 #%% EarlyStopping
 
@@ -511,7 +513,7 @@ Beispiel: Vektoren von "Hund" und "Katze" sind sich ähnlicher als "Katze" und
 # Ein Dictionary aus der Embeddings-Datei aufbauen
 embeddings_index = {}
 
-f = open('/mnt/usb-Seagate_Expansion+_NAAG83MS-0:0-part2/Datenschatz/glove.6B/glove.6B.100d.txt')
+f = open('13_transfer_learning/glove.6B.100d.txt', encoding='utf-8')
 
 for line in tqdm(f):
     values = line.split()
@@ -617,3 +619,4 @@ prediction1 = model.predict(satz1_padded)
 
 print("Positives Feedback (sollte 1 sein)", prediction)
 print("Negatives Feedback (sollte 0 sein)", prediction1)
+
