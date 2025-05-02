@@ -46,7 +46,7 @@ import warnings  # Für die Kontrolle von Warnmeldungen
 warnings.filterwarnings('ignore')  # Technische Warnungen während der Ausführung werden ignoriert
 
 
-
+#%%
 ############################################
 # Warum diese Bibliotheken?
 # - Pandas: Daten organisieren (Spalten hinzufügen/entfernen, filtern)
@@ -69,6 +69,8 @@ data = pd.read_csv(url, names=columns)  # Lädt CSV von der URL und weist Spalte
 
 print("Datensatz erfolgreich geladen!")
 
+
+#%%
 ############################################
 # Details zum Laden der Daten:
 # - pd.read_csv() lädt Daten von einer URL
@@ -118,6 +120,7 @@ zero_fields = ['Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI']
 print("\nAnzahl der 0-Werte:")
 print(data[zero_fields].eq(0).sum())  # Zählt die Anzahl der 0-Werte
 
+#%%
 """
 # Warum sind 0-Werte problematisch?
 # - Glucose: 0 Blutzucker ist unmöglich (Messfehler)
@@ -137,6 +140,7 @@ for column in zero_fields:
     data[column] = data[column].fillna(mean_value)  # Füllt NaN mit dem Mittelwert
     print(f"0-Werte in Spalte {column} wurden durch Mittelwert {mean_value:.2f} ersetzt")
 
+#%%
 ############################################
 # Logik der Datenbereinigung:
 # 1. Unlogische 0-Werte durch NaN ersetzen → Markiert die Daten
@@ -164,6 +168,8 @@ print(f"{initial_outliers} BMI-Ausreißer wurden durch Mittelwert ersetzt")
 # Diese Werte können das Modell irreführen und werden daher korrigiert.
 ############################################
 
+
+#%%
 ############################################
 # 6. Korrelationsmatrix
 ############################################
@@ -183,6 +189,8 @@ plt.show()  # Zeigt das Diagramm
 # Beispiel: Hohe Korrelation zwischen Glucose und Outcome zeigt Bedeutung für Diabetes-Vorhersage.
 ############################################
 
+
+#%%
 ############################################
 # 7. Verteilungsdiagramme
 ############################################
@@ -212,6 +220,9 @@ plt.show()  # Zeigt alle Diagramme
 # - Hilft, Ausreißer zu visualisieren
 ############################################
 
+
+
+#%%
 ############################################
 # 8. PyCaret-Setup
 ############################################
@@ -237,6 +248,9 @@ print("PyCaret-Setup abgeschlossen!")
 # - fix_imbalance: Korrigiert unausgeglichene Klassen
 ############################################
 
+
+
+#%%
 ############################################
 # 9. Vergleich aller Modelle
 ############################################
@@ -258,6 +272,9 @@ for i, model in enumerate(best_models, 1):
 # - Kappa: Genauigkeit unter Berücksichtigung von Zufall
 ############################################
 
+
+
+#%%
 ############################################
 # 10. Beste Modelle erstellen und optimieren
 ############################################
@@ -283,6 +300,7 @@ for model in best_models:
 # - Stichprobenanteil
 ############################################
 
+#%%
 ############################################
 # 11. Spezielles Random-Forest-Modell erstellen und optimieren
 ############################################
@@ -300,6 +318,8 @@ print("Random-Forest-Modell erfolgreich erstellt und optimiert!")
 # - Interpretierbar durch Feature Importance
 ############################################
 
+
+#%%
 ############################################
 # 12. Ensemble-Modell erstellen
 ############################################

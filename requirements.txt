@@ -8,3 +8,4 @@ PyNomaly
 scikit-learn
 alibi_detect
 ipykernel
+pycaret
