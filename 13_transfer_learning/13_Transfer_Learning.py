@@ -53,7 +53,7 @@ Quelle:
 
 """
 
-im = img.imread('13_Transfer_Learning_01-Überblick.png')
+im = img.imread('13_transfer_learning/13_Transfer_Learning_01-Überblick.png')
 plt.figure(dpi=600)
 plt.axis("off")
 plt.imshow(im)
@@ -110,7 +110,7 @@ Wie implementiert man transfer learning? 6 Schritte:
 
 """
 #%%
-im = img.imread('13_Transfer_Learning_02-Base.png')
+im = img.imread('13_transfer_learning/13_Transfer_Learning_02-Base.png')
 plt.figure(dpi=600)
 # plt.figure.figsize(16,10)
 plt.axis("off")
@@ -225,20 +225,20 @@ ist auf ImageNet trainiert
 """
 
 model = ResNet50(weights='imagenet')
-img_path = '13_Transfer_Learning_03-elephant2.jpg'
+img_path = '13_transfer_learning/13_Transfer_Learning_03-elephant2.jpg'
 imag = image.load_img(img_path, target_size=(224, 224))
 x = image.img_to_array(imag)
 x = np.expand_dims(x, axis=0)
 x = preprocess_input(x)
 
-im = img.imread('13_Transfer_Learning_03-elephant.jpg')
+im = img.imread('13_transfer_learning/13_Transfer_Learning_03-elephant.jpg')
 plt.figure(dpi=600)
 plt.axis("off")
 plt.imshow(im)
 plt.show()
 
 
-im = img.imread('13_Transfer_Learning_03-elephant2.jpg')
+im = img.imread('13_transfer_learning/13_Transfer_Learning_03-elephant2.jpg')
 plt.figure(dpi=600)
 plt.axis("off")
 plt.imshow(im)
@@ -278,7 +278,7 @@ Beispiel: word embedding wird für feature extraction benutzt, Wörter werden in
     Englische Modelle können auch mit deutscher Sprache verwendet werden.
     
 """
-im = img.imread('13_Transfer_Learning_04-Feature_extraction.jpg')
+im = img.imread('13_transfer_learning/13_Transfer_Learning_04-Feature_extraction.jpg')
 plt.figure(dpi=600)
 plt.axis("off")
 plt.imshow(im)
@@ -309,24 +309,26 @@ Beispiel für Bilder in Keras
 =============================================================================
 """
 
-# Datei herunterladen
-# url = 'https://storage.googleapis.com/mledu-datasets/cats_and_dogs_filtered.zip'
-# filename = 'catsdogs.zip'
-# urllib.request.urlretrieve(url, filename)
+# # Datei herunterladen
+# # url = 'https://storage.googleapis.com/mledu-datasets/cats_and_dogs_filtered.zip'
+# # filename = 'catsdogs.zip'
+# # urllib.request.urlretrieve(url, filename)
 
-# Verzeichnis erstellen und ZIP-Datei extrahieren
-path = os.getcwd()
-base_dir = os.path.join(path, "cats_and_dogs_filtered")
-# base_dir = os.path.normpath('/content/cats_and_dogs_filtered')  # Passe den Pfad zu dem gewünschten Verzeichnis an
-# os.makedirs(base_dir, exist_ok=True)
-# with zipfile.ZipFile(filename, 'r') as zip_ref:
-#     zip_ref.extractall(base_dir)
+# # Verzeichnis erstellen und ZIP-Datei extrahieren
+# path = os.getcwd()
+# base_dir = os.path.join(path, "cats_and_dogs_filtered")
+# # base_dir = os.path.normpath('/content/cats_and_dogs_filtered')  # Passe den Pfad zu dem gewünschten Verzeichnis an
+# # os.makedirs(base_dir, exist_ok=True)
+# # with zipfile.ZipFile(filename, 'r') as zip_ref:
+# #     zip_ref.extractall(base_dir)
 
 # Trainings- und Validierungsverzeichnisse festlegen
-train_dir = os.path.join(base_dir, 'train')
-validation_dir = os.path.join(base_dir, 'validation')
+train_dir = '13_transfer_learning/cats_and_dogs_filtered/train'
+validation_dir = '13_transfer_learning/cats_and_dogs_filtered/validation'
 
 #%% Erstellen der Train und Validation Sets
+
+print(train_dir)
 
 training_set = image_dataset_from_directory(train_dir,
                                             shuffle=True,
@@ -397,7 +399,7 @@ model = keras.Model(inputs, outputs)
 
 model.compile(optimizer='adam', 
               loss=tf.keras.losses.BinaryCrossentropy(from_logits=True),
-              metrics=keras.metrics.BinaryAccuracy())
+              metrics=[keras.metrics.BinaryAccuracy()])
 
 model.fit(training_set, 
           epochs=20, 
@@ -413,12 +415,12 @@ model.compile(optimizer=keras.optimizers.Adam(1e-5),
 
 #%% EarlyStopping
 
-log_path = "Logs2"
+log_path = "13_transfer_learning/Logs2"
 if not os.path.exists(log_path):
     os.mkdir(log_path)
 
 # in anaconda prompt: tensorboard --logdir PATH_TO_LOG_FOLDER
-log_folder = 'Logs2'
+log_folder = '13_transfer_learning/Logs2'
 callbacks = [
             EarlyStopping(patience = 5),
             TensorBoard(log_dir=log_folder)
@@ -442,7 +444,7 @@ Word Embedding ist ein Vector, der einen Text repräsentiert, Wörter mit
 
 #%% Datensatz laden   
 
-df = pd.read_csv('combined_data.csv')
+df = pd.read_csv('13_transfer_learning/combined_data.csv')
 
 print(df.head())
 
