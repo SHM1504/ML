@@ -49,6 +49,8 @@ print(df.head())
 df.rename(columns ={'ID': 'counterfeit'}, inplace = True)
 print(df.head())
 
+df.to_csv('Ralph_Draft/banknotes_neu.csv')
+
 
 
 
